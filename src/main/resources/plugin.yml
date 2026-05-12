@@ -1,0 +1,11 @@
+name: TAB
+version: '${version}'
+
+main: dev.iris.tAB.TAB
+api-version: '26.1.2'
+load: POSTWORLD
+folia-supported: true
+
+commands:
+  tabreload:
+    permission: tab.reload

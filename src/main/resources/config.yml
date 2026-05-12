@@ -1,0 +1,16 @@
+tab:
+  enabled: true
+
+  update-ticks: 20
+
+  header:
+    - ""
+    - "&7&lMY SERVER"
+    - ""
+    - "&6The TAB plugin is simple, similar to 2b2t."
+    - ""
+
+  footer:
+    - ""
+    - "&8%tps% tps - %online% players - %ping% ping"
+    - ""

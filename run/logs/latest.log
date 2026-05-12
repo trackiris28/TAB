@@ -1,0 +1,8 @@
+[11:49:12] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.3+9-LTS; Microsoft Microsoft-13877124) on Windows 10 10.0 (amd64)
+[11:49:12] [ServerMain/INFO]: [bootstrap] Loading Paper 26.1.2-63-main@711c5de (2026-05-11T08:20:02Z) for Minecraft 26.1.2
+[11:49:13] [ServerMain/WARN]: [oshi.driver.windows.perfmon.PerfmonDisabled] Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[11:49:14] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[11:49:14] [ServerMain/INFO]: [PluginInitializerManager] Initialized 1 plugin
+[11:49:14] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (1):
+ - TAB (1.0-SNAPSHOT)
+[11:49:26] [ServerMain/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
