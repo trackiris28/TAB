@@ -8,11 +8,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-
 public final class TAB extends JavaPlugin {
 
     private static TAB instance;
+
     private ConfigManager configManager;
+    private TabTask tabTask;
 
     @Override
     public void onEnable() {
@@ -21,21 +22,29 @@ public final class TAB extends JavaPlugin {
         saveDefaultConfig();
 
         configManager = new ConfigManager(this);
+        tabTask = new TabTask(this);
 
         getServer().getPluginManager().registerEvents(
-                new PlayerJoinListener(),
+                new PlayerJoinListener(this),
                 this
         );
 
-        Objects.requireNonNull(getCommand("tabreload")).setExecutor(new ReloadCommand());
+        Objects.requireNonNull(getCommand("tabreload"), "tabreload command is missing from plugin.yml")
+                .setExecutor(new ReloadCommand(this));
 
-        new TabTask().start();
+        tabTask.start();
 
         getLogger().info("TAB Enabled");
     }
 
     @Override
     public void onDisable() {
+        if (tabTask != null) {
+            tabTask.stop();
+        }
+
+        instance = null;
+
         getLogger().info("TAB Disabled");
     }
 
@@ -45,5 +54,9 @@ public final class TAB extends JavaPlugin {
 
     public ConfigManager getConfigManager() {
         return configManager;
+    }
+
+    public TabTask getTabTask() {
+        return tabTask;
     }
 }

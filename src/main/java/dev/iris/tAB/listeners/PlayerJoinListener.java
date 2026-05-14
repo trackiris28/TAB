@@ -8,12 +8,17 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
 
+    private final TAB plugin;
+
+    public PlayerJoinListener(TAB plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-
         event.getPlayer().getScheduler().run(
-                TAB.getInstance(),
-                _ -> TabManager.update(event.getPlayer()),
+                plugin,
+                task -> TabManager.update(event.getPlayer()),
                 null
         );
     }

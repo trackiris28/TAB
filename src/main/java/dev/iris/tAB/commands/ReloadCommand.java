@@ -8,6 +8,12 @@ import org.jspecify.annotations.NonNull;
 
 public class ReloadCommand implements CommandExecutor {
 
+    private final TAB plugin;
+
+    public ReloadCommand(TAB plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(
             CommandSender sender,
@@ -15,10 +21,8 @@ public class ReloadCommand implements CommandExecutor {
             @NonNull String label,
             String @NonNull [] args
     ) {
-
-        TAB.getInstance()
-                .getConfigManager()
-                .reload();
+        plugin.getConfigManager().reload();
+        plugin.getTabTask().restart();
 
         sender.sendMessage("Reloaded config!");
 
