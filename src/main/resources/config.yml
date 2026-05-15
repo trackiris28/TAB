@@ -1,3 +1,5 @@
+fake-ping-bars: 5
+
 tab:
   enabled: true
 

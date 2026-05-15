@@ -5,6 +5,7 @@ import dev.iris.tAB.tab.TabManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerJoinListener implements Listener {
 
@@ -16,10 +17,20 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        plugin.getFakePingPacketManager().inject(event.getPlayer());
+
         event.getPlayer().getScheduler().run(
                 plugin,
-                task -> TabManager.update(event.getPlayer()),
+                task -> {
+                    TabManager.update(event.getPlayer());
+                    plugin.getFakePingPacketManager().sendLatencyUpdate();
+                },
                 null
         );
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        plugin.getFakePingPacketManager().uninject(event.getPlayer());
     }
 }
