@@ -23,6 +23,7 @@ public class ReloadCommand implements CommandExecutor {
     ) {
         plugin.getConfigManager().reload();
         plugin.getTabTask().restart();
+        plugin.getFakePingPacketManager().refreshOnlinePlayers();
 
         sender.sendMessage("Reloaded config!");
 
